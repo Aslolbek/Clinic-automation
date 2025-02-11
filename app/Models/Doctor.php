@@ -23,4 +23,9 @@ class Doctor extends Authenticatable
     {
         return $this->belongsTo(Profession::class); // 'profession_id' orqali bog'lanadi
     }
+
+    public function diagnoses()
+    {
+        return $this->hasMany(Diagnosis::class, 'doctor_id');
+    }
 }

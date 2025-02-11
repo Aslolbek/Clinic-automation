@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Appointments;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,8 +22,6 @@ class AuthController extends Controller
 
     public function register_store(Request $request)
     {
-
-        
         $validated = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -39,10 +38,10 @@ class AuthController extends Controller
         return redirect('/login')->with('success', "Account successfully registered.");
         
     }
+ 
 
-    public function authenticate(Request $request)
-    {
-        
+    public function authenticate(Request $request)    {
+                    // return $request;
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -60,7 +59,9 @@ class AuthController extends Controller
     if ($doctor = Doctor::where('email', $request->email)->first()) {
         if (Auth::guard('doctor')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('admin');
+            $request->session()->put('doctor_id', $doctor->id);
+            return redirect()->route('doctors.index');
+
         }
     }
 
@@ -82,6 +83,7 @@ class AuthController extends Controller
 {
     Auth::guard('web')->logout();
     Auth::guard('doctor')->logout();
+    Auth::guard('admin')->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
  

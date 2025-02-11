@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             AppointmentsSeeder::class,
             CommentSeeder::class,
             AdminSeeder::class,
+            DiagnosisSeeder::class,
         ]);
 
         // User::factory()->create([

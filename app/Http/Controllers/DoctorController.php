@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Appointments;
 use App\Models\Doctor;
 use App\Models\Profession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,9 +16,12 @@ class DoctorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(Request $request) {
+
+        $doctor = Auth::guard('doctor')->user();
+            $appointments = Appointments::where('doctor_id', $doctor->id)->get();
+
+        return view('doctor.doctor-home', ['appointments' => $appointments]);
     }
 
     /**

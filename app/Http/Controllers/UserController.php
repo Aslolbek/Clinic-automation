@@ -49,9 +49,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // dd($user);
 
-        return view('clinica.show-doctor')->with('user', $user);
+        return view('doctor.one-view-user')->with('user', $user);
     }
 
     /**
@@ -59,7 +58,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.edit-doctor')->with(['user'=>$user]);
+        return view('doctor.one-view-user')->with(['user'=>$user]);
     }
 
     /**

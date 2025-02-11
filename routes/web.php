@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfessionController;
@@ -22,64 +23,60 @@ Route::get('/contact', [ PageController::class, 'contact'])->name('contact');
 Route::get('/service', [ PageController::class, 'service'])->name('service');
 
 Route::get('/team', [ PageController::class, 'team'])->name('team');
-// ->middleware('is_user');
 
 Route::get('/testimonial', [ PageController::class, 'testimonial'])->name('testimonial');
 
 
 /* Admin boshqaruvi uchun*/
-
-
 Route::get('/admin', [AdminPageController::class, 'admin'])->name('admin');
-Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function () {
-    
+Route::get('/admin/view-doctors', [AdminPageController::class, 'viewDoctors'])->name('admin.view-doctors');
 
-    Route::get('/admin/view-doctors', [AdminPageController::class, 'viewDoctors'])->name('admin.view-doctors');
+Route::get('/admin/create', [AdminPageController::class, 'createDoctor'])->name('admin.create');
 
-    Route::get('/admin/create', [AdminPageController::class, 'createDoctor'])->name('admin.create');
-
-    Route::get('/admin/doctor-one/{doctor}', [AdminPageController::class, 'one_view_doctor'])->name('one-view-doctor');
+Route::get('/admin/doctor-one/{doctor}', [AdminPageController::class, 'one_view_doctor'])->name('one-view-doctor');
 
 
-    Route::get('/admin/profession-one/{profession}', [AdminPageController::class, 'one_view_profession'])->name('one-view-profession');
+Route::get('/admin/profession-one/{profession}', [AdminPageController::class, 'one_view_profession'])->name('one-view-profession');
 
-    
-    Route::resource('professions', ProfessionController::class);
-});
+
+// 
+Route::get('/appointment', [ PageController::class, 'appointment']);
+
+Route::resource('professions', ProfessionController::class);
+
+
 
 
 // Login uchun 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register_store', [AuthController::class, 'register_store'])->name('register_store');
+
 Route::post('authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
 
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::middleware(['auth', 'role:user'])->group(
-    function(){
+
+// User route
+Route::resource('users', UserController::class);
+
+// Appintment route
+Route::resource('appointments', AppointmentsController::class);
+
+// Comment route
+Route::resource('comments', CommentController::class);
 
 
-        Route::get('/appointment', [ PageController::class, 'appointment']);
 
-        Route::resource('users', UserController::class);
+// Doctor route
+Route::resource('doctors', DoctorController::class);
 
-        Route::resource('appointments', AppointmentsController::class);
+//Profession route
+Route::resource('professions', ProfessionController::class);
 
-        Route::resource('comments', CommentController::class);
-        
-    }
-);
+// Diagnsis rouet
+Route::resource('diagnosis', DiagnosisController::class);
 
-
-Route::middleware(['auth', RoleMiddleware::class.':admin,doctor'])->group(
-    function(){
-
-        Route::resource('doctors', DoctorController::class);
-
-        Route::resource('professions', ProfessionController::class);
-    }
-);
 

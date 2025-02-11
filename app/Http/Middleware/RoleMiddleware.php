@@ -16,7 +16,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        dd($roles);
+        // dd($roles);
         
         $user = Auth::guard('admin')->user() 
         ?? Auth::guard('doctor')->user() 
