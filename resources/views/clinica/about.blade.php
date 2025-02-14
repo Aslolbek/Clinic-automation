@@ -25,7 +25,7 @@
                     <p><i class="far fa-check-circle text-primary me-3"></i>Sifatli sog'liqni saqlash</p>
                     <p><i class="far fa-check-circle text-primary me-3"></i>Faqat malakali shifokorlar</p>
                     <p><i class="far fa-check-circle text-primary me-3"></i>Tibbiy tadqiqot mutaxassislari</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="">Ko'proq o'qish</a>
+                    {{-- <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="">Ko'proq o'qish</a> --}}
                 </div>
             </div>
         </div>

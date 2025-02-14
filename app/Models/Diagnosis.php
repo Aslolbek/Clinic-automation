@@ -19,6 +19,6 @@ class Diagnosis extends Model
 
     public function doctors()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
     }
 }

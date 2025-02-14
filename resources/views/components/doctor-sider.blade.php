@@ -42,27 +42,9 @@
             <h4 class="text-section">Menu</h4>
           </li>
           <li class="nav-item">
-            <a href="/admin/view-doctors">
+            <a href="/doctors">
                 <i class="fas fa-layer-group"></i>
-                <p>Hodimlar ro'yxati ko'rish</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.create') }}">
-                <i class="fas fa-layer-group"></i>
-                <p>Hodimlar tizimga kiritish</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.create') }}">
-                <i class="fas fa-layer-group"></i>
-                <p>Hodimlar tizimga kiritish</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.create') }}">
-                <i class="fas fa-layer-group"></i>
-                <p>Hodimlar tizimga kiritish</p>
+                <p>Ko'riklar ro'yxati</p>
             </a>
         </li>
           
