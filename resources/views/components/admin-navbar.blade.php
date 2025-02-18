@@ -66,7 +66,7 @@
               </div>
               <span class="profile-username">
                 <span class="op-7">Salom</span>
-                <span class="fw-bold">{{ Auth::guard('doctor')->user()->first_name }}</span>
+                <span class="fw-bold">{{ Auth::guard('admin')->user()->first_name }}</span>
               </span>
             </a>
             <ul class="dropdown-menu dropdown-user animated fadeIn">

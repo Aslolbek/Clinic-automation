@@ -29,7 +29,7 @@
       <div class="sidebar-content">
         <ul class="nav nav-secondary">
             <li class="nav-item active">
-                <a href="/admin">
+                <a href="/doctors">
                     <i class="fas fa-home"></i>
                     <p>Bosh sahifa</p>
                 </a>
@@ -47,9 +47,6 @@
                 <p>Ko'riklar ro'yxati</p>
             </a>
         </li>
-          
-
-        
         </ul>
       </div>
     </div>
