@@ -55,7 +55,7 @@ class AuthController extends Controller
         }
     }
 
-    // Keyin Doctorni tekshiramiz
+    // Keyin DoctorniF tekshiramiz
     if ($doctor = Doctor::where('email', $request->email)->first()) {
         if (Auth::guard('doctor')->attempt($credentials)) {
             $request->session()->regenerate();

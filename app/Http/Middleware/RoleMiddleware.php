@@ -17,21 +17,20 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, ...$roles)
     {
         // dd($roles);
-        
-        $user = Auth::guard('admin')->user() 
-        ?? Auth::guard('doctor')->user() 
-        ?? Auth::user();
-        
-        
-          if (!$user) {
-                  return redirect('/login'); // Agar foydalanuvchi autentifikatsiyadan o'tmagan bo'lsa
-              }
-            
-            if (!in_array($user->role, $roles)) {
-                return redirect()->route('login')->with('error', 'Sizga bu sahifaga kirish taqiqlangan.');
-            }
 
-       return $next($request);
-    
+        $user = Auth::guard('admin')->user()
+            ?? Auth::guard('doctor')->user()
+            ?? Auth::user();
+
+
+        if (!$user) {
+            return redirect('/login'); // Agar foydalanuvchi autentifikatsiyadan o'tmagan bo'lsa
+        }
+
+        if (!in_array($user->role, $roles)) {
+            return redirect()->route('login')->with('error', 'Sizga bu sahifaga kirish taqiqlangan.');
+        }
+
+        return $next($request);
     }
 }

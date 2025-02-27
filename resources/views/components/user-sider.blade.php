@@ -3,16 +3,11 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="{{ route('doctors.index') }}" class="logo">
-                <h3 style="color: aliceblue">Doctor profil</h3>
+            <a href="{{ route('users.index') }}" class="logo">
+                <h3 style="color: aliceblue">User profil</h3>
             </a>
             <div class="nav-toggle">
-                <button class="btn btn-toggle toggle-sidebar">
-                    <i class="gg-menu-right"></i>
-                </button>
-                <button class="btn btn-toggle sidenav-toggler">
-                    <i class="gg-menu-left"></i>
-                </button>
+
             </div>
             <button class="topbar-toggler more">
                 <i class="gg-more-vertical-alt"></i>
@@ -24,7 +19,7 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
                 <li class="nav-item active">
-                    <a href="/doctors">
+                    <a href="/">
                         <i class="fas fa-home"></i>
                         <p>Bosh sahifa</p>
                     </a>
@@ -37,7 +32,7 @@
                     <h4 class="text-section">Menu</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="/doctors">
+                    <a href="{{ route('showAppointments')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Ko'riklar ro'yxati</p>
                     </a>

@@ -1,10 +1,10 @@
 <x-layouts.main>
     <x-slot:title>
         Testimonial
-     </x-slot>
+    </x-slot>
 
 
-     <x-page-header>
+    <x-page-header>
         Testimonial
     </x-page-header>
 
@@ -13,19 +13,26 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
-                <h1>What Say Our Patients!</h1>
+                <p class="d-inline-block border rounded-pill py-1 px-4">Fikirlar</p>
+                <h1>Bemorlarimiz nima deydi!!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
-                    <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Patient Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                
+                @if ($comments)
+                    @foreach ($comments as $comment)
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/img/testimonial-1.jpg"
+                                style="width: 100px; height: 100px;">
+                            <div class="testimonial-text rounded text-center p-4">
+                                <p>{{ $comment->about }}</p>
+                                <h5 class="mb-1">{{ $comment->user->first_name }}
+                                    {{ $comment->user->last_name }}</h5>
+                                <span class="fst-italic">{{ $comment->user->created_at }}</span>
+                            </div>
+                        </div>
+                    @endforeach
+
+                @endif
+
             </div>
         </div>
     </div>
@@ -35,4 +42,4 @@
 
 
 
- </x-layouts.main>
+</x-layouts.main>

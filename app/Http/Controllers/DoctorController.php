@@ -16,10 +16,11 @@ class DoctorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $doctor = Auth::guard('doctor')->user();
-            $appointments = Appointments::where('doctor_id', $doctor->id)->get();
+        $appointments = Appointments::where('doctor_id', $doctor->id)->get();
 
         return view('doctor.doctor-home', ['appointments' => $appointments]);
     }
@@ -37,14 +38,13 @@ class DoctorController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        if($request->hasFile('photo')){
-
-            $path = $request->file('photo')->store('user-photos');
-            
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('user-photos', 'public'); // "public" diskka saqlash
         }
 
+        
         $user = Doctor::create([
-            'profession_id'=> $request->input('profession_id'),
+            'profession_id' => $request->input('profession_id'),
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'password' => Hash::make($request->password),
@@ -52,10 +52,10 @@ class DoctorController extends Controller
             'about' => $request->about,
             'photo' => $path,
             'role' => 'doctor'
-
+            
         ]);
-        
-        return redirect()->route('team');
+
+        return redirect()->route('admin');
     }
 
     /**
@@ -73,7 +73,7 @@ class DoctorController extends Controller
     {
 
         $professions = Profession::all();
-        return view('admin.edit-doctor', ['doctor'=>$doctor, 'professions' => $professions ]);
+        return view('admin.edit-doctor', ['doctor' => $doctor, 'professions' => $professions]);
     }
 
     /**
@@ -81,15 +81,14 @@ class DoctorController extends Controller
      */
     public function update(StoreUserRequest $request, Doctor $doctor)
     {
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
 
-            if (isset($doctor->photo) ) {
+            if (isset($doctor->photo)) {
                 Storage::delete($doctor->photo);
             }
 
             $path = $request->file('photo')->store('user-photos');
             $doctor->photo = $path;
-            
         }
 
 
@@ -112,7 +111,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        if (isset($doctor->photo) ) {
+        if (isset($doctor->photo)) {
             Storage::delete($doctor->photo);
         }
         $doctor->appointments()->delete();

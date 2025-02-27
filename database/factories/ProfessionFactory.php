@@ -18,6 +18,7 @@ class ProfessionFactory extends Factory
     {
         return [
             'name' => $this->faker->word,  // Soxta kasb nomi
+            'about' => 'Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.',  // Soxta malumot 
         ];
     }
 }

@@ -23,9 +23,6 @@ class StoreAppointmentsRequest extends FormRequest
     {
         return [
             'doctor_id' => 'required',
-            'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
             'first_data' => 'required',
             'diagnos' => 'nullable'
         ];

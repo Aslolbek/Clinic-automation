@@ -9,7 +9,9 @@ class Profession extends Model
 {
     /** @use HasFactory<\Database\Factories\ProfessionFactory> */
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name', 'about'
+    ];
 
     public function doctors()
     {

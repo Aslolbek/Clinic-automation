@@ -81,5 +81,4 @@ class DiagnosisController extends Controller
         $diagnosis->delete();
         return redirect()->route('diagnoses.index')->with('success', 'Tashxis o‘chirildi!');
     }
-    
 }

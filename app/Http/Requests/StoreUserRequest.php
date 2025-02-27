@@ -13,8 +13,6 @@ class StoreUserRequest extends FormRequest
         'first_name' => 'Ism',
         'last_name' => 'Familiya',
         'email' => 'Pochta',
-        'password' => 'Parol',
-        'profession_id' => 'Mutahasislik',
     ];
 }
 

@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'password' => Hash::make('Asrorbek1'), // Default parol (o'zgartirish mumkin)
             'email' => $this->faker->unique()->safeEmail(),  // Unikal email
             'phone' => $this->faker->unique()->phoneNumber(), // Unikal telefon raqami
+            'photo' => $this->faker->imageUrl(200, 200, 'people'),
             'role' => 'user',
             'created_at' => now(),
             'updated_at' => now(),

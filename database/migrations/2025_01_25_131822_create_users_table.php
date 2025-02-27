@@ -17,7 +17,8 @@ return new class extends Migration
         $table->string('last_name'); // Familiya
         $table->string('password'); // Parol
         $table->string('email');  // Email
-        $table->string('phone');  // Email
+        $table->string('phone');  // Phone
+        $table->string('photo');  // Phone
         $table->string('role')->default('user');
         $table->timestamps(); // Yaratilgan va yangilangan vaqtlar uchun
     });

@@ -11,17 +11,25 @@ class User extends  Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['first_name', 'last_name', 'password', 'email', 'phone', 'role'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'password',
+        'email',
+        'phone',
+        'photo',
+        'role'
+    ];
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
-
     }
-    public function appointments() {
+    public function appointments()
+    {
         return $this->hasMany(Appointments::class);
-
     }
 
     public function diagnoses()

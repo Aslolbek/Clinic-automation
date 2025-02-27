@@ -9,7 +9,7 @@
     />
     <link
       rel="icon"
-      href="img/kaiadmin/favicon.ico"
+      href={{asset("img/kaiadmin/favicon.ico")}}
       type="image/x-icon"
     />
 
@@ -48,7 +48,10 @@
 
       <div class="main-panel">
         
-        <x-admin-navbar></x-admin-navbar>
+        <x-admin-navbar>
+
+
+        </x-admin-navbar>
 
 
         {{ $slot }}

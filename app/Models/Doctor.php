@@ -9,13 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Doctor extends Authenticatable
 {
     use HasFactory;
-    protected $fillable = [ 'profession_id', 'first_name', 'last_name', 'password', 'email', 'profession', 'about', 'photo', 'role' ];
+    protected $fillable = ['profession_id', 'first_name', 'last_name', 'password', 'email', 'profession', 'about', 'photo', 'role'];
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
-
     }
-    public function appointments() {
+    public function appointments()
+    {
         return $this->hasMany(Appointments::class);
     }
 

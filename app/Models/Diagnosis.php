@@ -10,7 +10,11 @@ class Diagnosis extends Model
     /** @use HasFactory<\Database\Factories\DiagnosisFactory> */
     use HasFactory;
 
-    protected $fillable = ['user_id', 'doctor_id', 'diagnosis'];
+    protected $fillable = [
+        'user_id',
+        'doctor_id',
+        'diagnosis'
+    ];
 
     public function users()
     {

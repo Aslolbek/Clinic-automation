@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
-  
+
 
     /**
      * Display a listing of the resource.
@@ -18,16 +18,13 @@ class AppointmentsController extends Controller
     public function index()
     {
         $doctors = Doctor::all();
-        return view('clinica.appointment', ['doctors'=> $doctors]);
+        return view('clinica.appointment', ['doctors' => $doctors]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -35,24 +32,26 @@ class AppointmentsController extends Controller
     public function store(StoreAppointmentsRequest $request)
     {
 
+        $user = Auth::guard('web')->user();
         $appointment = Appointments::create([
-            'doctor_id'=> $request->input('doctor_id'),
-            'user_id'=> Auth::id(),
-             'name' =>$request->name, 
-             'phone' => $request->phone, 
-             'email' => $request->email, 
-             'appointment_times' => $request->first_data, 
-             'diagnos' => $request->diagnos,
+            'doctor_id' => $request->input('doctor_id'),
+            'user_id' => Auth::id(),
+            'name' => $user->first_name,
+            'phone' => $user->phone,
+            'email' => $user->email,
+            'appointment_times' => $request->first_data,
+            'diagnos' => $request->diagnos,
         ]);
         return redirect()->route('appointments.index');
     }
 
     /**
      * Display the specified resource.
+     * Userga uchrashuvlarni olib berish uchun ishlatiladi
      */
     public function show(appointments $appointments)
     {
-        //
+        
     }
 
     /**
@@ -62,6 +61,7 @@ class AppointmentsController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -74,8 +74,9 @@ class AppointmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(appointments $appointments)
+    public function destroy(appointments $appointment)
     {
-        //
+        $appointment->delete(); // Appointmentni o'chiramiz
+        return redirect()->route('showAppointments')->with('success', 'Appointment muvaffaqiyatli o‘chirildi!');
     }
 }

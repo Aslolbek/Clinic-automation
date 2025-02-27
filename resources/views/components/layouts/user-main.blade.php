@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <title>User profil</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-    <link rel="icon" href="img/kaiadmin/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href={{ asset('img/kaiadmin/favicon.ico') }} type="image/x-icon" />
 
     <!-- Fonts and icons -->
     <script src={{ asset('js/plugin/webfont/webfont.min.js') }}></script>
@@ -41,13 +41,16 @@
 <body>
     <div class="wrapper">
 
-        <x-doctor-sider>
+        <x-user-sider>
 
-        </x-doctor-sider>
+        </x-user-sider>
 
         <div class="main-panel">
 
-            <x-doctor-navbar></x-doctor-navbar>
+            <x-user-navbar>
+
+
+            </x-user-navbar>
 
 
             {{ $slot }}

@@ -60,7 +60,9 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // User route
+Route::get('user/showAppointments', [UserController::class, 'showAppointments'])->name('showAppointments');
 Route::resource('users', UserController::class);
+
 
 // Appintment route
 Route::resource('appointments', AppointmentsController::class);
