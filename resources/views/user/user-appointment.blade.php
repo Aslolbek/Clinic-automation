@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="card-action">
-                        <a href="/user" class="btn btn-danger">Ortga</a>
+                        <a href="{{route('showAppointments')}}" class="btn btn-danger">Ortga</a>
                     </div>
                 </div>
             </div>

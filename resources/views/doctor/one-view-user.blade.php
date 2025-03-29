@@ -21,9 +21,9 @@
                         <h5 class="mb-4">Phone: {{ $user->phone }}</h5>
                         {{-- <p>{{ $doctor->about }}</p> --}}
                     </div>
-                    @if ($user->diagnoses)
-
-                        <h4 class="mb-4">Oldingi tashhislar</h4>
+                    @if (!$user->diagnoses->isEmpty())
+                    
+                    <h4 class="mb-4">Oldingi tashhislar</h4>
                         @foreach ($user->diagnoses as $diagnos)
                             <div>
                                 <h5>Shifokor: {{ $diagnos->doctors->last_name }} {{ $diagnos->doctors->first_name }}
@@ -32,7 +32,7 @@
                                 <p> Sana: {{ $diagnos->created_at }}</p>
                             </div>
                         @endforeach
-                    @elseif($user->diagnoses->isEmpty())
+                    @else
                         <h4 class="text-muted">Tashhislar mavjud emas</h4>
                     @endif
                     <!-- Comment start -->

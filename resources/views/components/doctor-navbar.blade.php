@@ -36,7 +36,7 @@
                           <img src="storage/{{ Auth::guard('doctor')->user()->photo }}"
                               alt="image profile" class="avatar-img rounded" />
                       @else
-                          <img src={{ asset('img/profile.jpg') }} alt="image profile"
+                          <img src={{ asset('/img/profile.jpg') }} alt="image profile"
                               class="avatar-img rounded" />
                       @endif
                         </div>
@@ -55,7 +55,7 @@
                                             <img src="storage/{{ Auth::guard('doctor')->user()->photo }}"
                                                 alt="image profile" class="avatar-img rounded" />
                                         @else
-                                            <img src={{ asset('img/profile.jpg') }} alt="image profile"
+                                            <img src={{ asset('/img/profile.jpg') }} alt="image profile"
                                                 class="avatar-img rounded" />
                                         @endif
                                     </div>

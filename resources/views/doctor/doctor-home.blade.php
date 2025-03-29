@@ -29,7 +29,8 @@
                                                 <td>{{ $appointment->diagnos }}</td>
                                                 <td>{{ $appointment->appointment_times }}</td>
                                                 <td>
-                                                    @if ($appointment->user->diagnoses)
+                                                    <h4></h4>
+                                             @if(!$appointment->user->diagnoses->isEmpty())
                                                         <span class="text-success">✅ Tashxis qo‘yilgan</span>
                                                     @else
                                                         <span class="text-danger">❌ Hali tashxis qo‘yilmagan</span>
